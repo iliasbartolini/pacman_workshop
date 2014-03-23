@@ -1,16 +1,16 @@
 package com.thoughtworks.pacman.core.maze;
 
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-
 import com.thoughtworks.pacman.core.Tile;
 import com.thoughtworks.pacman.core.TileCoordinate;
 import com.thoughtworks.pacman.core.tiles.Door;
 import com.thoughtworks.pacman.core.tiles.Dot;
 import com.thoughtworks.pacman.core.tiles.EmptyTile;
 import com.thoughtworks.pacman.core.tiles.Wall;
+
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class MazeBuilder {
     private static final String WALLED_MAZE_MAP_FILENAME = "walled_maze.map";
@@ -65,13 +65,13 @@ public class MazeBuilder {
     private Tile[][] allTiles = new Tile[40][40];
 
     Maze build() {
-        Tile[][] tiles1 = new Tile[height][width];
+        Map<TileCoordinate, Tile> tiles = new HashMap<TileCoordinate, Tile>();
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                tiles1[y][x] = allTiles[y][x];
+                tiles.put(new TileCoordinate(x,y),allTiles[y][x]);
             }
         }
-        return new Maze(width, height, tiles1);
+        return new Maze(width, height, tiles);
     }
 
     void process(String row) throws Exception {

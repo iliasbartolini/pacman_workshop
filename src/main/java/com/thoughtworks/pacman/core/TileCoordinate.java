@@ -3,8 +3,8 @@ package com.thoughtworks.pacman.core;
 import com.thoughtworks.pacman.core.maze.Maze;
 
 public class TileCoordinate {
-    public final int x;
-    public final int y;
+    private final int x;
+    private final int y;
 
     public TileCoordinate(int x, int y) {
         this.x = x;
@@ -25,6 +25,10 @@ public class TileCoordinate {
 
     public TileCoordinate remainder(Maze maze) {
         return new TileCoordinate((x + maze.getWidth()) % maze.getWidth(), (y + maze.getHeight()) % maze.getHeight());
+    }
+
+    public boolean isValid(int width, int height) {
+        return x >= 0 && x < width && y >= 0 && y < height;
     }
 
     @Override

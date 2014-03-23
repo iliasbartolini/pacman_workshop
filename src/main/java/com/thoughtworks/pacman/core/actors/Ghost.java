@@ -1,14 +1,14 @@
 package com.thoughtworks.pacman.core.actors;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import com.thoughtworks.pacman.core.Actor;
 import com.thoughtworks.pacman.core.Direction;
 import com.thoughtworks.pacman.core.SpacialCoordinate;
 import com.thoughtworks.pacman.core.TileCoordinate;
 import com.thoughtworks.pacman.core.maze.Maze;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Ghost extends Actor {
     private GhostType type;
@@ -48,7 +48,7 @@ public class Ghost extends Actor {
             List<TileCoordinate> availableTiles = new ArrayList<TileCoordinate>();
             for (Direction direction : Direction.validMovements()) {
                 TileCoordinate nextTile = currentTile.add(direction.tileDelta());
-                if (maze.canMove(nextTile.x, nextTile.y) && !nextTile.equals(previousTile)) {
+                if (maze.canMove(nextTile) && !nextTile.equals(previousTile)) {
                     availableTiles.add(nextTile);
                 }
             }

@@ -1,12 +1,12 @@
 package com.thoughtworks.pacman.core;
 
-import java.awt.Dimension;
-
 import com.thoughtworks.pacman.core.actors.Ghost;
 import com.thoughtworks.pacman.core.actors.Pacman;
 import com.thoughtworks.pacman.core.maze.Maze;
 import com.thoughtworks.pacman.core.maze.MazeBuilder;
 import com.thoughtworks.pacman.core.tiles.visitors.PacmanTileVisitor;
+
+import java.awt.*;
 
 public class Game {
     private final Maze maze;
@@ -60,7 +60,7 @@ public class Game {
         }
 
         TileCoordinate tileCoordinate = pacman.getCenter().toTileCoordinate();
-        Tile pacmanTile = maze.tileAt(tileCoordinate.x, tileCoordinate.y);
+        Tile pacmanTile = maze.tileAt(tileCoordinate);
         pacmanTile.visit(pacmanTileVisitor);
     }
 
